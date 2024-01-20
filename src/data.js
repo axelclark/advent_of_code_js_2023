@@ -6,7 +6,7 @@ function load(file, trim = true) {
   let fileContent = fs.readFileSync(filePath, "utf8");
 
   if (trim) {
-    fileContent = fileContent.split("\n").map((line) => line.trim());
+    fileContent = fileContent.split("\n").filter((x) => x !== "");
   } else {
     fileContent = fileContent.split("\n");
   }
