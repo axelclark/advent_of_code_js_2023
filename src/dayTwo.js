@@ -49,9 +49,18 @@ const isPossible = ({ results }) => {
   return gameIsPossible;
 };
 
+const calculate_power = ({ results }) => {
+  return Array.from(results).reduce((acc, [_color, value]) => {
+    return acc * value;
+  }, 1);
+};
+
 const partTwo = (input) => {
-  result = input.map(parseLine);
-  return input;
+  const result = input
+    .map(parseLine)
+    .map(calculate_power)
+    .reduce((acc, power) => acc + power, 0);
+  return result;
 };
 
 exports.partOne = partOne;
